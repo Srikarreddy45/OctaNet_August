@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #ff8080, #cc66ff);
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .task {
+            flex: 1;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <ul id="taskList">
+            <li>
+                <div class="checkbox">
+                    <input type="checkbox" id="task1">
+                    <label for="task1">Eat Helthy</label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <input type="checkbox" id="task2">
+                    <label for="task2">Take Out Trash</label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <input type="checkbox" id="task3">
+                    <label for="task3">Office Work</label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <input type="checkbox" id="task4">
+                    <label for="task4">Go To GYM</label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <input type="checkbox" id="task5">
+                    <label for="task5">Go For Walk</label>
+                </div>
+            </li>
+        </ul>
+        <div class="buttons">
+            <button id="addBtn">Add Task</button>
+        </div>
+    </div>
+    <script>
+        const taskList = document.getElementById('taskList');
+        const addBtn = document.getElementById('addBtn');
+
+        addBtn.addEventListener('click', () => {
+            let taskName = prompt("Enter new task:");
+            if (taskName !== null && taskName.trim() !== "") {
+                let newTask = document.createElement('li');
+                newTask.innerHTML = `
+                    <div class="checkbox">
+                        <input type="checkbox" id="task${taskList.children.length + 1}">
+                        <label for="task${taskList.children.length + 1}">${taskName}</label>
+                    </div>
+                `;
+                taskList.appendChild(newTask);
+            }
+        });
+
+        // Initial checkboxes state (replace with your desired checked items)
+        document.getElementById('task1').checked = true;
+        document.getElementById('task2').checked = true;
+        document.getElementById('task4').checked = true;
+    </script>
+</body>
+</html>
